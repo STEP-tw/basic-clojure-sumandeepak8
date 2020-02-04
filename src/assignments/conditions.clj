@@ -12,25 +12,25 @@
   {:level        :easy
    :use          '[if-not zero?]
    :implemented? true}
-  [x y] 
-  ( if( zero? y ) :infinite (/ x y)))
-    
+  [x y]
+  (let [result (safe-divide x y)]
+    (if (nil? result) :infinite result)))
 
 (defn harishchandra
   "Only returns truthy values as themselves.
   Falsy values(false and nil) return nil"
   {:level        :easy
    :use          '[when-let]
-   :implemented? false}
-  [x])
+   :implemented? true}
+  [x] (if (or (false? x) (nil? x)) false true))
 
 (defn yudishtira
   "Only returns truthy values as themselves.
   Falsy values(false and nil) return :ashwathama"
   {:level        :easy
    :use          '[if-let]
-   :implemented? false}
-  [x])
+   :implemented? true}
+  [x] (if (harishchandra x) true :ashwathama))
 
 (defn duplicate-first
   "Returns coll with the first element duplicated.
