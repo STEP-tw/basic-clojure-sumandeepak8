@@ -13,18 +13,24 @@
     (is (= 2 (informative-divide 4 2)))
     (is (= :infinite (informative-divide 4 0)))))
 
-(deftest harishchandra-test 
-    (testing "return only true for truthy values"
+(deftest harishchandra-test
+  (testing "return only true for truthy values"
     (is (= true (harishchandra 2))))
-    (testing "return only false for falsy values"
+  (testing "return only false for falsy values"
     (is (= false (harishchandra false))))
-    (testing "return false for nil values also"
+  (testing "return false for nil values also"
     (is (= false (harishchandra nil)))))
 
-(deftest yudishtira-test 
-    (testing "return only true for truthy values"
+(deftest yudishtira-test
+  (testing "return only true for truthy values"
     (is (= true (yudishtira 2))))
-    (testing "return only false for falsy values"
+  (testing "return only false for falsy values"
     (is (= :ashwathama (yudishtira false))))
-    (testing "return false for nil values also"
+  (testing "return false for nil values also"
     (is (= :ashwathama (yudishtira nil)))))
+
+(deftest duplication
+  (testing "return coll with first element duplicate if coll is not empty"
+    (is (= [1 1 2] (duplicate-first [1 2]))))
+  (testing "return nil when coll is empty"
+    (is (= nil (duplicate-first [])))))
