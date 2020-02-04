@@ -34,3 +34,13 @@
     (is (= [1 1 2] (duplicate-first [1 2]))))
   (testing "return nil when coll is empty"
     (is (= nil (duplicate-first [])))))
+
+(deftest five-points
+  (testing "should return :chetan-bhagat when y is 5"
+    (is (= :chetan-bhagat (five-point-someone 2 5))))
+  (testing "should return :satan-bhagat when x is 5"
+    (is (= :satan-bhagat (five-point-someone 5 5))))
+  (testing "should return :greece when x is greater than y"
+    (is (= :greece (five-point-someone 5 4))))
+  (testing "should return :universe when x is greater than y"
+    (is (= :universe (five-point-someone 6 8)))))

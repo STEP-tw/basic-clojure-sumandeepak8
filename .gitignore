@@ -13,3 +13,4 @@ pom.xml.asc
 .rebel_readline_history
 *.iml
 .idea/
+.eastwood

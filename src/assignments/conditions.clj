@@ -51,8 +51,13 @@
   Otherwise it returns :universe"
   {:level        :easy
    :use          '[cond]
-   :implemented? false}
-  [x y])
+   :implemented? true}
+  [x y]
+  (cond
+    (> x y) :greece
+    (= x 5) :satan-bhagat
+    (= y 5) :chetan-bhagat
+    :else :universe))
 
 (defn conditions-apply
   "Given a collection of any length, returns:
