@@ -67,7 +67,16 @@
   (testing "should return :empty-string when x is empty string"
     (is (= :empty-string (zero-aliases "")))))
 
-
 (deftest zero-separated-palindrome-test
   (testing "[1 2 3] -> (4 3 2 0 2 3 4)"
     (is (= '(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3])))))
+
+(deftest repeat-and-truncate-test
+  (testing "(range 4) true true 6 => '(0 1 2 3 0 1)"
+    (is (= '(0 1 2 3 0 1) (repeat-and-truncate (range 4) true true 6))))
+  (testing "(range 4) false true 6 => '(0 1 2 3)"
+    (is (= '(0 1 2 3) (repeat-and-truncate (range 4) false true 6))))
+  (testing "should return list of 2 elements without truncating and repeating"
+      (is (= '(1 2 3) (repeat-and-truncate [1 2 3] false false 2))))
+  (testing "should return list of single element after truncating"
+      (is (= '(1 2) (repeat-and-truncate [1 2 3] false true 2)))))

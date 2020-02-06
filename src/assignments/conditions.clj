@@ -78,8 +78,18 @@
   (repeat-and-truncate (range 4) true true 6) => '(0 1 2 3 0 1)"
   {:level        :medium
    :use          '[cond->> concat take]
-   :implemented? false}
-  [coll rep? truncate? n])
+   :implemented? true}
+  [coll rep? truncate? n]
+  (if (true? truncate?) (take n
+  (if (true? rep?)
+    (loop [iter 1 acc []]
+      (if (> iter (+ 1 (/ n (count coll))))
+        acc
+        (recur (inc iter) (concat acc coll))))
+    coll))
+                        coll))
+
+
 
 (defn order-in-words
   "Given x, y and z, returns a vector consisting of
@@ -125,7 +135,7 @@
   [1 2 3] -> (4 3 2 0 2 3 4)"
   {:level :easy
    :use '[as-> reverse]
-   :implemented? false}
+   :implemented? true}
   [coll] (
            as-> coll array
                 (map inc array)
