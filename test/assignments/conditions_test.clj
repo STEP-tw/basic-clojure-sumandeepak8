@@ -44,3 +44,11 @@
     (is (= :greece (five-point-someone 5 4))))
   (testing "should return :universe when x is greater than y"
     (is (= :universe (five-point-someone 6 8)))))
+
+(deftest order-in-words-test
+  (testing "when x > y > z, should return [:x-greater-than-y :y-greater-than-z]"
+    (is (= [:x-greater-than-y :y-greater-than-z] (order-in-words 3 2 1))))
+  (testing "when z > x > y, should return [:x-greater-than-y :z-greater-than-x]"
+    (is (= [:x-greater-than-y :z-greater-than-x] (order-in-words 3 2 4))))
+  (testing "when z > y > x, should return [:z-greater-than-x]"
+    (is (= [:z-greater-than-x] (order-in-words 1 2 4)))))
