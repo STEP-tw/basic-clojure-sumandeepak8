@@ -53,12 +53,6 @@
   (testing "when z > y > x, should return [:z-greater-than-x]"
     (is (= [:z-greater-than-x] (order-in-words 1 2 4)))))
 
-;[] -> :empty
-;'() -> :empty
-;#{} -> :empty-set
-;{}  -> :empty-map
-;""  -> :empty-string
-
 (deftest zero-aliases-test
   (testing "should return :zero when x is 0"
     (is (= :zero (zero-aliases 0))))
@@ -72,3 +66,8 @@
     (is (= :empty-map (zero-aliases {}))))
   (testing "should return :empty-string when x is empty string"
     (is (= :empty-string (zero-aliases "")))))
+
+
+(deftest zero-separated-palindrome-test
+  (testing "[1 2 3] -> (4 3 2 0 2 3 4)"
+    (is (= '(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3])))))
