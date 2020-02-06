@@ -52,3 +52,23 @@
     (is (= [:x-greater-than-y :z-greater-than-x] (order-in-words 3 2 4))))
   (testing "when z > y > x, should return [:z-greater-than-x]"
     (is (= [:z-greater-than-x] (order-in-words 1 2 4)))))
+
+;[] -> :empty
+;'() -> :empty
+;#{} -> :empty-set
+;{}  -> :empty-map
+;""  -> :empty-string
+
+(deftest zero-aliases-test
+  (testing "should return :zero when x is 0"
+    (is (= :zero (zero-aliases 0))))
+  (testing "should return :empty when x is []"
+    (is (= :empty (zero-aliases []))))
+  (testing "should return :empty when x is '()"
+    (is (= :empty (zero-aliases '()))))
+  (testing "should return :empty-set when x is #{}"
+    (is (= :empty-set (zero-aliases #{}))))
+  (testing "should return :empty-map when x is {}"
+    (is (= :empty-map (zero-aliases {}))))
+  (testing "should return :empty-string when x is empty string"
+    (is (= :empty-string (zero-aliases "")))))
