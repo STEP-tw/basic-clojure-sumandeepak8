@@ -89,8 +89,6 @@
     coll))
                         coll))
 
-
-
 (defn order-in-words
   "Given x, y and z, returns a vector consisting of
   sentences that explicitly mention if x > y or y > z or z > x.
