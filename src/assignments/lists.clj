@@ -10,10 +10,6 @@
    :implemented? false}
   [f & colls])
 
-(defn max-index [coll] (- (count coll) 1))
-
-(defn nth-element [coll n] (nth coll n))
-
 (defn filter'
   "Implement a non-lazy version of filter that accepts a
   predicate function and a collection. The output
@@ -22,11 +18,14 @@
    :use          '[loop recur]
    :dont-use     '[filter]
    :implemented? true}
-  [pred coll] (loop [iter 0 res []]
-                (if (> iter (max-index coll))               ; need to refactor it
-                  res
-                  (recur (inc iter) (let [curr (nth-element coll iter)]
-                                      (if (pred curr) (conj res curr) res))))))
+  [pred coll]
+  (loop [coll coll res []]
+    (if (empty? coll)
+      res
+      (recur (rest coll)
+             (if (pred (first coll))
+               (conj res (first coll))
+               res)))))
 
 (defn reduce'
   "Implement your own multi-arity version of reduce
@@ -38,10 +37,10 @@
    :implemented? true}
   ([f coll] (reduce' f (first coll) (rest coll)))
   ([f init coll]
-   (loop [iter 0 acc init]
-     (if (> iter (max-index coll))
+   (loop [coll coll acc init]
+     (if (empty? coll)
        acc
-       (recur (inc iter) (f acc (nth-element coll iter)))))))
+       (recur (rest coll) (f acc (first coll)))))))
 
 (defn count'
   "Implement your own version of count that counts the
