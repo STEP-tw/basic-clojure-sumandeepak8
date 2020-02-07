@@ -48,7 +48,7 @@
   {:level        :easy
    :use          '[loop recur]
    :dont-use     '[count]
-   :implemented? false}
+   :implemented? true}
   ([coll]
    (loop [coll coll count 0]
      (if (empty? coll) count
@@ -61,8 +61,11 @@
   {:level        :easy
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]
-   :implemented? false}
-  ([coll]))
+   :implemented? true}
+  ([coll] (
+            loop [coll coll arr '()]
+            (if (empty? coll) arr
+                              (recur (rest coll) (conj arr (first coll)))))))
 
 (defn every?'
   "Implement your own version of every? that checks if every

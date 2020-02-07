@@ -33,3 +33,9 @@
 (deftest count-test
   (testing "should return 4 when coll is (range 4)"
     (is (= 4 (count' (range 4))))))
+
+(deftest reverse-test
+  (testing "should return (reverse (range 4) when (reverse' (range 4)) calls"
+    (is (= '(3 2 1 0) (reverse' [0 1 2 3]))))
+  (testing "should return (reverse (range 4) when (reverse' (range 4)) calls"
+    (is (= '(2 1 0) (reverse' '(0 1 2))))))
