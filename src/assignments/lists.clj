@@ -73,8 +73,11 @@
   {:level        :easy
    :use          '[loop recur and]
    :dont-use     '[every?]
-   :implemented? false}
-  ([pred coll]))
+   :implemented? true}
+  ([pred coll]
+   (loop [coll coll res true]
+     (if (or (empty? coll) (false? res)) res
+     (recur (rest coll) (pred (first coll)))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one

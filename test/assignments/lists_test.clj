@@ -39,3 +39,9 @@
     (is (= '(3 2 1 0) (reverse' [0 1 2 3]))))
   (testing "should return (reverse (range 4) when (reverse' (range 4)) calls"
     (is (= '(2 1 0) (reverse' '(0 1 2))))))
+
+(deftest every-test
+  (testing "should return false when pred is even? and coll is [1 2 3 4]"
+    (is (= false (every?' even? [1 2 3 4]))))
+  (testing "should return true when pred is even? and coll is [0 2 22 4]"
+    (is (= true (every?' even? [0 2 22 4])))))
