@@ -67,6 +67,14 @@
             (if (empty? coll) arr
                               (recur (rest coll) (conj arr (first coll)))))))
 
+(defn validation [pred coll df-value]
+  (
+    let [condition (if (true? df-value) false? true?)]
+    (loop [coll coll res df-value]
+    (if (or (empty? coll) (condition res)) res
+                                       (recur (rest coll) (pred (first coll)))))
+  ))
+
 (defn every?'
   "Implement your own version of every? that checks if every
   element of a coll satisfies the given predicate"
@@ -75,9 +83,7 @@
    :dont-use     '[every?]
    :implemented? true}
   ([pred coll]
-   (loop [coll coll res true]
-     (if (or (empty? coll) (false? res)) res
-                                         (recur (rest coll) (pred (first coll)))))))
+   (validation pred coll true)))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
@@ -89,11 +95,7 @@
    :dont-use     '[some]
    :implemented? true}
   ([pred coll]
-   (
-     loop [coll coll res false]
-     (if (or (empty? coll) (true? res)) res
-
-                                        (recur (rest coll) (pred (first coll)))))))
+   (validation pred coll false)))
 
 (defn ascending?
   "Verify if every element is greater than or equal to its predecessor"
