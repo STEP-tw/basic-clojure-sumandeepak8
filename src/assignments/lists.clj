@@ -77,7 +77,7 @@
   ([pred coll]
    (loop [coll coll res true]
      (if (or (empty? coll) (false? res)) res
-     (recur (rest coll) (pred (first coll)))))))
+                                         (recur (rest coll) (pred (first coll)))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
@@ -87,8 +87,13 @@
   {:level        :easy
    :use          '[loop recur or]
    :dont-use     '[some]
-   :implemented? false}
-  ([pred coll]))
+   :implemented? true}
+  ([pred coll]
+   (
+     loop [coll coll res false]
+     (if (or (empty? coll) (true? res)) res
+
+                                        (recur (rest coll) (pred (first coll)))))))
 
 (defn ascending?
   "Verify if every element is greater than or equal to its predecessor"

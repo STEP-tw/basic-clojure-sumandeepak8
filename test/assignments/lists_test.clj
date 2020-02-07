@@ -45,3 +45,11 @@
     (is (= false (every?' even? [1 2 3 4]))))
   (testing "should return true when pred is even? and coll is [0 2 22 4]"
     (is (= true (every?' even? [0 2 22 4])))))
+
+(deftest some-test
+  (testing "should return true when pred is even? and coll is [1 2 3 4]"
+    (is (= true (some?' even? [1 2 3 4]))))
+  (testing "should return false when pred is even? and coll is [0 2 22 4]"
+    (is (= false (some?' even? [1 3 21]))))
+  (testing "should return true when pred is even? and coll is [0 2 22 4]"
+    (is (= true (some?' odd? [1 3 4])))))
