@@ -29,3 +29,7 @@
     (is (= 12 (reduce' + 6 [1 2 3])))
     )
   )
+
+(deftest count-test
+  (testing "should return 4 when coll is (range 4)"
+    (is (= 4 (count' (range 4))))))
