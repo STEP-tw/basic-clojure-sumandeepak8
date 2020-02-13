@@ -64,3 +64,8 @@
     (is (= 2 (index-of [1 3 4 5] 4))))
   (testing "should return 4 when coll is (1 3 4 5 6 3) and n is 6"
     (is (= 4 (index-of '(1 3 4 5 6 3) 6)))))
+
+
+(deftest sqr-of-the-first-test
+  (testing "[4 5 6] => [16 16 16]"
+    (is (= [16 16 16] (sqr-of-the-first [4 5 6])))))
