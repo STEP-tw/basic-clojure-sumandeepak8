@@ -71,9 +71,9 @@
   (
     let [condition (if (true? df-value) false? true?)]
     (loop [coll coll res df-value]
-    (if (or (empty? coll) (condition res)) res
-                                       (recur (rest coll) (pred (first coll)))))
-  ))
+      (if (or (empty? coll) (condition res)) res
+                                             (recur (rest coll) (pred (first coll)))))
+    ))
 
 (defn every?'
   "Implement your own version of every? that checks if every
@@ -131,8 +131,9 @@
   {:level        :medium
    :use          '[map + rest]
    :dont-use     '[loop recur partition]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (map (fn [x] (reduce + x)) (partition 2 1 coll)))
 
 (defn max-three-digit-sequence
   "Given a collection of numbers, find a three digit sequence that
@@ -269,8 +270,12 @@
   {:level        :easy
    :use          '[loop recur rest]
    :dont-use     '[.indexOf memfn]
-   :implemented? false}
-  [coll n])
+   :implemented? true}
+  [coll n]
+  (let [n n min-index -1]
+    (loop [index 0 coll coll]
+      (if (= (first coll) n) index
+                             (recur (inc index) (rest coll))))))
 
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."
