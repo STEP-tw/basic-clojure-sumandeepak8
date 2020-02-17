@@ -69,3 +69,7 @@
 (deftest sqr-of-the-first-test
   (testing "[4 5 6] => [16 16 16]"
     (is (= [16 16 16] (sqr-of-the-first [4 5 6])))))
+
+(deftest third-or-fifth-test
+  (testing "[1, 2, 3, 4, 5, 6, 7, 8] => [1, 4, 6, 7]"
+    (is (= [1, 4, 6, 7] (third-or-fifth [1, 2, 3, 4, 5, 6, 7, 8])))))

@@ -210,8 +210,15 @@
   elements whose index is either divisible by three or five"
   {:level        :easy
    :use          '[keep-indexed when :optionally map-indexed filter]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (let [total (count coll)]
+    (loop [index 0 coll coll res []]
+    (if (= index total)
+    res
+    (recur (inc index) (rest coll)
+           (if(or (= (rem index 3) 0) (= (rem index 5) 0)) (conj res (first coll)) res)
+    )))))
 
 (defn sqr-of-the-first
   "Given a collection, return a new collection that contains the
