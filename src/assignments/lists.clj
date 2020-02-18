@@ -202,8 +202,9 @@
   each element repeated twice"
   {:level        :easy
    :use          '[mapcat partial repeat :optionally vector]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (reduce (fn [x y] (concat x [y y])) [] coll))
 
 (defn third-or-fifth
   "Given a collection return a new collection that contains

@@ -58,13 +58,11 @@
   (testing "should add adjacent number"
     (is (= [3 5 8] (sum-of-adjacent-digits [1 2 3 5])))))
 
-
 (deftest index-of-test
   (testing "should return 2 when coll is [1 3 4 5] and n is 4"
     (is (= 2 (index-of [1 3 4 5] 4))))
   (testing "should return 4 when coll is (1 3 4 5 6 3) and n is 6"
     (is (= 4 (index-of '(1 3 4 5 6 3) 6)))))
-
 
 (deftest sqr-of-the-first-test
   (testing "[4 5 6] => [16 16 16]"
@@ -73,3 +71,7 @@
 (deftest third-or-fifth-test
   (testing "[1, 2, 3, 4, 5, 6, 7, 8] => [1, 4, 6, 7]"
     (is (= [1, 4, 6, 7] (third-or-fifth [1, 2, 3, 4, 5, 6, 7, 8])))))
+
+(deftest double-up-test
+  (testing "[1,2,3] -> [1,1,2,2,3,3]"
+    (is (= [1, 1, 2, 2, 3, 3] (double-up [1,2,3])))))
