@@ -75,3 +75,7 @@
 (deftest double-up-test
   (testing "[1,2,3] -> [1,1,2,2,3,3]"
     (is (= [1, 1, 2, 2, 3, 3] (double-up [1,2,3])))))
+
+(deftest russian-dolls-test
+  (testing "[1 2 3] 3 ->  [[[1]] [[2]] [[3]]]"
+    (is (= [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))))
