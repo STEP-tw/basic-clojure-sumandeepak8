@@ -267,13 +267,21 @@
    :implemented? false}
   [coll])
 
+(defn half-length [coll]
+  (let [len (count coll) half (/ len 2) m-half (int (inc half))]
+    (if (even? len) half m-half)))
+
 (defn palindrome?
   "Implement a recursive palindrome check of any given sequence"
   {:level        :easy
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (let [len (half-length coll) half (take len coll)]
+    (loop [coll coll res []]
+    (if (= (count res) len) (= half res)
+    (recur (butlast coll) (conj res (last coll)))))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index
@@ -288,6 +296,7 @@
     (loop [index 0 coll coll]
       (if (= (first coll) n) index
                              (recur (inc index) (rest coll))))))
+
 
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."

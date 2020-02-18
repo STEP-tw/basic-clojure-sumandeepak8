@@ -79,3 +79,13 @@
 (deftest russian-dolls-test
   (testing "[1 2 3] 3 ->  [[[1]] [[2]] [[3]]]"
     (is (= [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))))
+
+(deftest palindrome?-test
+  (testing "with empty collection"
+    (is (true? (palindrome? []))))
+  (testing "with palindrome list"
+    (is (true? (palindrome? [1 2 1]))))
+  (testing "with string"
+    (is (true? (palindrome? "NaN"))))
+  (testing "not a palindrome"
+    (is (false? (palindrome? [1 2 3])))))
